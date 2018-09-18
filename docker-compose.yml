@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+    jorani:
+      container_name: rps_jorani
+      build:
+        context: .
+        dockerfile: Dockerfile
+      image: jorani:latest
+      restart: always
+      ports:
+       - "8080:80"
+      links:
+       - mysql
+
+    mysql:
+      image: mysql:5.5
+      environment:
+        - MYSQL_ROOT_PASSWORD=123456
+        - MYSQL_DATABASE=lms
+
+      volumes:
+        - lms.sql:/docker-entrypoint-initdb.d/lms.sql
+
+volumes:
+  lms.sql:
+    external: true
