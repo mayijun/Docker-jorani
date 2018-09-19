@@ -7,10 +7,10 @@ services:
       build:
         context: .
         dockerfile: Dockerfile
-      image: jorani:latest
+      image: jorani
       restart: always
       ports:
-       - "8080:80"
+       - "80:80"
       links:
        - mysql
 
@@ -21,8 +21,8 @@ services:
         - MYSQL_DATABASE=lms
 
       volumes:
-        - lms.sql:/docker-entrypoint-initdb.d/lms.sql
+        - db-data:/var/lib/mysql/data
+        - ./lms.sql:/docker-entrypoint-initdb.d/lms.sql
 
 volumes:
-  lms.sql:
-    external: true
+  db-data:
