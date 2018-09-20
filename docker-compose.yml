@@ -23,7 +23,7 @@ services:
         - MYSQL_DATABASE=lms
 
       volumes:
-        - rps-jorani-db-data:/var/lib/mysql/data
+        - rps-jorani-db-data:/var/lib/mysql
         - ./lms.sql:/docker-entrypoint-initdb.d/1-lms.sql
 
 volumes:
