@@ -13,6 +13,7 @@ RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update -y && apt-get install -y php5.6 libapache2-mod-php5.6 php5.6-mbstring php5.6-ldap php5.6-mysql php5.6-mcrypt && rm -rf /var/lib/apt/lists/*
 RUN phpenmod mcrypt
 RUN phpenmod openssl
+RUN phpenmod mbstring
 RUN wget https://github.com/bbalet/jorani/archive/v0.6.4.tar.gz
 RUN rm -Rf /var/www/html
 RUN tar zxvf v0.6.4.tar.gz
