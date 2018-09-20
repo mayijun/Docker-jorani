@@ -13,16 +13,18 @@ services:
        - "80:80"
       links:
        - mysql
+      environment:
+        - MYSQL_ROOT_PASSWORD=Password123456_Change_Me!
 
     mysql:
       image: mysql:5.5
       environment:
-        - MYSQL_ROOT_PASSWORD=123456
+        - MYSQL_ROOT_PASSWORD=Password123456_Change_Me!
         - MYSQL_DATABASE=lms
 
       volumes:
-        - db-data:/var/lib/mysql/data
-        - ./lms.sql:/docker-entrypoint-initdb.d/lms.sql
+        - rps-jorani-db-data:/var/lib/mysql/data
+        - ./lms.sql:/docker-entrypoint-initdb.d/1-lms.sql
 
 volumes:
-  db-data:
+  rps-jorani-db-data:
